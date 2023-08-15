@@ -51,19 +51,6 @@ def coinChange(coins: list[int], amount: int) -> int:
 
 
 def helper(coins, amount, dp):
-    """
-    The helper function calculates the minimum number of coins needed to make a given amount using a
-    dynamic programming approach.
-
-    :param coins: The `coins` parameter is a list of integers representing the different denominations
-    of coins available. For example, if `coins = [1, 2, 5]`, it means that there are coins available in
-    denominations of 1, 2, and 5
-    :param amount: The amount is the target amount of money that we want to make using the given coins
-    :param dp: The parameter `dp` is a dictionary that stores the minimum number of coins required to
-    make a certain amount of change. The keys of the dictionary represent the amount of change, and the
-    values represent the minimum number of coins required to make that amount of change
-    :return: the minimum number of coins needed to make up the given amount using the given coins.
-    """
     if amount in dp:
         return dp[amount]
     if amount < 0:
