@@ -1,4 +1,4 @@
-'''
+"""
     LeetCode Problem - 91: Decode Ways 
     
     A message containing letters from A-Z can be encoded into numbers using the following mapping:
@@ -14,15 +14,16 @@
     Note that the grouping (1 11 06) is invalid because "06" cannot be mapped into 'F' since "6" is different from "06".
 
     Given a string s containing only digits, return the number of ways to decode it.
-'''
+"""
 
-__author__ = 'Vatsal Thakkar'
-__credits__ = ['Vatsal Thakkar']
-__email__ = 'vatsalthakkar3.vt@gmail.com'
+__author__ = "Vatsal Thakkar"
+__credits__ = ["Vatsal Thakkar"]
+__email__ = "vatsalthakkar3.vt@gmail.com"
 
 #######################################################################
-#                            SOLUTION                                 #               
+#                            SOLUTION                                 #
 #######################################################################
+
 
 def numDecodings(s: str) -> int:
     """
@@ -38,24 +39,23 @@ def numDecodings(s: str) -> int:
     def rec(i):
         if i in dp:
             return dp[i]
-        if s[i] == '0':
+        if s[i] == "0":
             return 0
-        res = rec(i+1)
-        if (i+1 < len(s) and (s[i] == '1' or s[i] == '2' and s[i+1] in '0123456')):
-            res += rec(i+2)
+        res = rec(i + 1)
+        if i + 1 < len(s) and (s[i] == "1" or s[i] == "2" and s[i + 1] in "0123456"):
+            res += rec(i + 2)
 
         dp[i] = res
         return res
 
     return rec(0)
 
+
 #######################################################################
-#                           SANITY CHECK                              #               
+#                           SANITY CHECK                              #
 #######################################################################
 
-test_cases = [(["12"], 2),
-              (["226"], 3),
-              (["06"], 0)]
+test_cases = [(["12"], 2), (["226"], 3), (["06"], 0)]
 
 
 def test(cases):
